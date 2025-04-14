@@ -1,10 +1,16 @@
-#First Python program
-print("Hello World! ")
+print("Welcome to the tip calculator!\n")
 
-print("Welcome to the Band Name Generator.")
+total_bill = float(input("What was the total bill? $"))
 
-name_city = input("What's the name of the city you grew up in?\n")
+tip_percent = float(input("How much tip would you like to give? 10, 12, or 15%?"))
 
-name_pet = input("What's your pet's name?\n")
+tip_percent /= 100 
 
-print("Your band name could be: " + name_city + " " + name_pet)
+people = float(input("How many people to split the bill?"))
+
+result = total_bill *  (tip_percent+1) / people
+
+formatted_result = "{:.2f}".format(result)
+
+print(f"Each person should pay: ${formatted_result }")
+
