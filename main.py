@@ -1,11 +1,16 @@
-#For with Range function
-#Syntax
-#for number in range(a,b): #from a to b increase by 1, if you want another number of steps, you must give third argument
-    #print(number)
+#FizzBuzz challenge in python
+# 1-100 
+# %3 Fizz
+# %5 Buzz
+# %3 & %5 FizzBuzz
+# else number of loop 
 
-#Gauss Challenge => Print the sum of the numbers from 1 to 100 
-total = 0
-for i in range(1,101):
-    total+=i
-
-print(total)
+for number in range(1,101):
+    if number % 3 == 0 and number % 5 == 0:
+        print("FizzBuzz")
+    elif number % 3 == 0:
+        print("Fizz")
+    elif number % 5 == 0:
+        print("Buzz")
+    else:
+        print(number)
