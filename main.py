@@ -1,38 +1,108 @@
 import random
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+stages = [r'''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', r'''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', r'''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+word_list = ["aardvark", "baboon", "camel"]
 
-print("Welcome to the PyPassword Generator!")
-nr_letters = int(input("How many letters would you like in your password?\n"))
-nr_symbols = int(input(f"How many symbols would you like?\n"))
-nr_numbers = int(input(f"How many numbers would you like?\n"))
+# TODO-1: - Create a variable called 'lives' to keep track of the number of lives left.
+#  Set 'lives' to equal 6.
+lives = 6
 
-#Easy version, sequential
-pwd = ""
-for char in range(0, nr_letters):
-    pwd += random.choice(letters)
-for char in range(0, nr_numbers):
-    pwd += random.choice(numbers)
-for char in range(0, nr_symbols):
-    pwd += random.choice(symbols)
-print(pwd)
+chosen_word = random.choice(word_list)
+print(chosen_word)
 
-#Hard version, totally random order
+placeholder = ""
+word_length = len(chosen_word)
+for position in range(word_length):
+    placeholder += "_"
+print(placeholder)
 
-password_list = []
-for char in range(0, nr_letters):
-    password_list.append(random.choice(letters))
-for char in range(0, nr_numbers):
-    password_list.append(random.choice(numbers))
-for char in range(0, nr_symbols):
-    password_list.append(random.choice(symbols))
+game_over = False
+correct_letters = []
 
-print(f"Sequential mode {password_list}")
-random.shuffle(password_list)
-print(f"Random mode {password_list}")
+while not game_over:
+    guess = input("Guess a letter: ").lower()
 
-for char in password_list:
-    pwd += char
-print(f"Your password is: {pwd}")
+    display = ""
 
+    for letter in chosen_word:
+        if letter == guess:
+            display += letter
+            correct_letters.append(guess)
+        elif letter in correct_letters:
+            display += letter
+        else:
+            display += "_"
+
+
+    # TODO-2: - If guess is not a letter in the chosen_word, Then reduce 'lives' by 1.
+    #  If lives goes down to 0 then the game should stop and it should print "You lose."
+    if "_" not in display:
+        game_over = True
+        print("You win.")
+    print("You have ", lives, " lives remain")
+    if guess not in chosen_word:
+        lives -= 1
+        if lives == 0:
+            game_over = True
+            print("You lose.")
+
+
+
+    # TODO-3: - print the ASCII art from 'stages'
+    #  that corresponds to the current number of 'lives' the user has remaining.
+    print(display)
+    print(stages[lives])
