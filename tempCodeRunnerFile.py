@@ -1,2 +1,1 @@
-
-print(2**19937)
+location

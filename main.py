@@ -20,6 +20,6 @@
 #Keyword Argument
 
 def greet_with(location , name):
-    print(f"Hello  {name}, how are all in {location}?")
+    print(f"Hello  {name}, how are you all in {location}?")
 
-greet_with(location="Piriapolis", name="Fer")
+greet_with( name="Fer", location="Piriapolis")
