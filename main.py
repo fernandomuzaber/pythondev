@@ -1,25 +1,21 @@
-# Functions with input
-
-# def greet_with_name(name):
-#     print(f"Hello {name}")
-#     print(f"How do you do {name}?")
-#
-#
-# greet_with_name("Jack Bauer")
+#Love calculator challenge
 
 
-#Functions with more than 1 input
-
-# def greet_with(name, location):
-#     print(f"Hello {name}")
-#     print(f"What is it like in {location}")
-#
-#
-# greet_with("Fer", "Piriapolis")
-
-#Keyword Argument
-
-def greet_with(location , name):
-    print(f"Hello  {name}, how are you all in {location}?")
-#Here it doesn't matter the order of parameters when you call the function bellow
-greet_with( name="Fer", location="Piriapolis")
+def calculate_love_score(name1, name2):
+    true = "TRUE"
+    love = "LOVE"
+    total_words = (name1 + name2)
+    count_true = 0
+    count_love = 0
+    
+    for char in total_words:
+        if char in true.lower():
+            count_true +=1
+        if char in love.lower():
+            count_love +=1
+    final_count = ""
+    final_count = str(count_true) + str(count_love)
+    print(final_count)
+            
+    
+calculate_love_score("John", "Doe")
