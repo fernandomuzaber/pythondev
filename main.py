@@ -1,8 +1,25 @@
-def life_in_weeks(age):
-    years_remaining = 90 - age
-    weeks_remaining = years_remaining * 52
-    print(f"You have {weeks_remaining} weeks left.")
+# Functions with input
 
-life_in_weeks(20)
-life_in_weeks(40)
-life_in_weeks(70)
+# def greet_with_name(name):
+#     print(f"Hello {name}")
+#     print(f"How do you do {name}?")
+#
+#
+# greet_with_name("Jack Bauer")
+
+
+#Functions with more than 1 input
+
+# def greet_with(name, location):
+#     print(f"Hello {name}")
+#     print(f"What is it like in {location}")
+#
+#
+# greet_with("Fer", "Piriapolis")
+
+#Keyword Argument
+
+def greet_with(location , name):
+    print(f"Hello  {name}, how are all in {location}?")
+
+greet_with(location="Piriapolis", name="Fer")
